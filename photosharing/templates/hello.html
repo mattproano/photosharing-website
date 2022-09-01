@@ -1,0 +1,110 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+<!doctype html>
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<title>Photoshare</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% endif %}
+
+{% if photos %}
+<h2>Here are your photos (scroll down for more options)</h2>
+    <ul>
+    {% for photo in photos %}
+
+
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+        <li>caption: {{photo[2]}}<br>
+        <li>pic_id: {{photo[1]}}<br>
+        
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if yourphotos %}
+<h2>Here are all your photos (scroll down for more options)</h2>
+    <ul>
+    {% for photo in yourphotos %}
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+        <li>caption: {{photo[1]}}<br>
+        <li>album: {{photo[2]}}<br>
+        <li>pic_id: {{photo[3]}}<br>
+        <br>
+        <br>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if allphotos %}
+<h2>Here are all photos posted to Photoshare (scroll down for more options)</h2>
+    <ul>
+    {% for photo in allphotos %}
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+        <li>caption: {{photo[1]}}<br>
+        <li>Posted by: {{photo[2]}} {{photo[3]}}<br>
+        <li>album name: {{photo[4]}}<br>
+        <li>pic id: {{photo[5]}}<br>
+        <li>likecount: {{photo[6]}}<br>
+        <li><a href='/likepost'>Like this post</a>
+        <li><a href='/makecomment'>Comment on this post</a>
+        <li><a href='/viewcomments'>View comments on this post</a> 
+        <br>
+        <br>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if topten %} 
+<h1> Here is the top ten</h1>
+    <ul>
+      {% for user in topten %} 
+        <li>name: {{user[0]}} {{user[1]}}<br>
+        <li>contributions: {{user[2]}}<br>
+      {% endfor %} 
+    </ul>
+{% endif %} 
+
+{% if friendrecs %} 
+<h1> Here are your friend recommendations (mutual friends)</h1>
+    <ul>
+      {% for email in friendrecs %} 
+        <li>email: {{email[0]}}<br>
+      {% endfor %} 
+    </ul>
+{% endif %} 
+
+{% if umayalsolike %} 
+<h1> You may like these photos</h1>
+    <ul>
+      {% for photo in umayalsolike %} 
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+      {% endfor %} 
+    </ul>
+{% endif %} 
+
+{% if message is none %}
+  <p>You should <a href='/login'>login!</a></p>
+{% else %}
+  <p> Go to <a href='/profile'>profile?</a></p>
+{% endif %}
+
+<ul>
+<li><a href='/login'>Login</a></li>
+<li><a href='/viewallphotos'>Browse all photos on Photoshare (COMMENTS AND LIKES HERE)</a> </li>
+<li><a href='/topten'>See the top10 users</a> </li>
+<li><a href='/viewyourphotos'>Browse your photos</a> </li>
+<li><a href='/searchbyalbum'>Browse photos by Album names</a> </li>
+<li><a href='/searchbytag'>View Top Tags and Browse photos by Tags (must be signed in)</a> </li>
+<li><a href='/upload'>Upload a photo</a> </li>
+<li><a href='/make_album'>Make an Album</a> </li>
+<li><a href='/deletephoto'>Delete a photo</a></li>
+<li><a href='/deletealbum'>Delete an album</a></li>
+<li><a href='/addfriend'>Add friends</a> </li>
+<li><a href='/viewfriendslist'>Your friends list</a> </li>
+<li><a href='/recfriend'>Recommend friends (mutual friends)</a> </li>
+<li><a href='/umayalsolike'>You make like these photos</a> </li>
+<li><a href='/usercommentsearch'>Search for user based on comment</a> </li>
+<li><a href='/logout'>Logout</a></li>
+<li><a href='/'>Home</a></li>
+</ul>

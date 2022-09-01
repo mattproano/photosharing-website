@@ -1,0 +1,25 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+{% if pid %} 
+<h2> Comment section for Photo {{pid}} </h2>
+{% endif %} 
+
+{% if comments %} 
+<ul>
+    {% for comment in comments %} 
+        <li>comment by {{comment[1]}} {{comment[2]}}: <br>
+        <li>{{comment[0]}}</li>
+    {% endfor %} 
+</ul>
+{% endif %}
+
+
+<body>
+<a href='/'>Home</a><br>
+<form method="post" action="/viewcomments">
+    <label for="pid">What picture (pic_id) do you want to see the comments for?:</label>
+    <input type="pid" name="pid" required="true" /><br />
+</form>
+</body>

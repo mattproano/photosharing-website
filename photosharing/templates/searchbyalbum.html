@@ -1,0 +1,25 @@
+<head>
+    <title>Search for photo by album(s)</title>
+</head>
+    <body>
+        <a href='/'>Home</a><br>
+        <div class="title">
+            <h1>Search by one or more albums (separate with space)</h1>
+        </div>
+        <form method="post" action="/searchbyalbum">
+            <label for="album_names">Enter album name(s):</label>
+            <input type="text" name="album_names" required="true" /><br />
+            <input type="submit" value="search" />
+        </form>
+    </body>
+
+{% if photos %}
+<h2>Here are all photos in album(s) you searched for (scroll down for more options)</h2>
+    <ul>
+    {% for photo in photos %}
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+        <li>caption: {{photo[1]}}<br>
+        <li>album name: {{photo[2]}}</li>
+    {% endfor %}
+    </ul>
+{% endif %}

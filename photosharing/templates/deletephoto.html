@@ -1,0 +1,18 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+<head>
+    <title>Delete Photo</title>
+</head>
+    <body>
+        <a href='/'>Home</a><br>
+        <div class="title">
+            <h1>Enter picture id of photo you wish to delete (photo must exist):</h1>
+        </div>
+        <form method="post" action="/deletephoto">
+            <label for="pid">Enter pic id:</label>
+            <input type="text" name="pid" required="true" /><br />
+            <input type="submit" value="Delete" />
+        </form>
+    </body>

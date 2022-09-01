@@ -1,0 +1,17 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<head>
+    <title>Like a photo</title>
+</head>
+    <body>
+        <a href='/'>Home</a><br>
+        <div class="title">
+            <h1>Like a photo</h1>
+        </div>
+        <form method="post" action="/likepost">
+            <label for="pid">Enter pic_id of photo you want to like:</label>
+            <input type="text" name="pid" required="true" /><br />
+            <input type="submit" value="Like Post!" />
+        </form>
+    </body>

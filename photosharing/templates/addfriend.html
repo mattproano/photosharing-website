@@ -1,0 +1,18 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<head>
+    <title>Add friend by email</title>
+</head>
+    <body>
+        <a href='/'>Home</a><br>
+        <a href='/viewfriendslist'>View your friends list</a><br>
+        <div class="title">
+            <h1>Input email of friend you want to add (friend must be registered)</h1>
+        </div>
+        <form method="post" action="/addfriend">
+            <label for="friend_email">Enter friend's email:</label>
+            <input type="text" name="friend_email" required="true" /><br />
+            <input type="submit" value="Add friend" />
+        </form>
+    </body>

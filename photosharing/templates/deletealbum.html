@@ -1,0 +1,18 @@
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+
+<head>
+    <title>Delete Album</title>
+</head>
+    <body>
+        <a href='/'>Home</a><br>
+        <div class="title">
+            <h1>Enter album name of album you wish to delete (album must exist):</h1>
+        </div>
+        <form method="post" action="/deletealbum">
+            <label for="anme">Enter album name:</label>
+            <input type="text" name="aname" required="true" /><br />
+            <input type="submit" value="Delete" />
+        </form>
+    </body>

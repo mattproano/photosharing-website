@@ -1,0 +1,16 @@
+<head>
+    <title>Here are your friends</title>
+</head>
+
+<a href='/addfriend'>Add more friends</a><br>
+<a href='/'>Home</a><br>
+
+<body>
+{% if yourfriends %}
+    <head>Your friends: </head><br>
+    {% for friend in yourfriends %} 
+    <li>{{friend[0]}} {{friend[1]}} email: {{friend[2]}}</li>
+    {% endfor %}
+{% endif %}
+</body>
+

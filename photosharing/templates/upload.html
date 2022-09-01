@@ -1,0 +1,24 @@
+<!-- author ben lawson (balawson@bu.edu) -->
+{% if message %}
+  <h4>{{message}}!</h4>
+{% endif %}
+<head>
+    <title>Upload a photo!</title>
+</head>
+<li><a href='/'>Home</a></li>
+    <body>
+        <div class="title">
+            <h1>Upload a photo to Photoshare</h1>
+        </div>
+            <form method="post" enctype="multipart/form-data" action="/upload">
+                <label for="photo">Select photo:</label>
+                <input type="file" name="photo" required='true' /><br />
+                <label for="caption">Please caption:</label>
+                <input type="text" name="caption" required='true' /><br />
+                <label for="album_name">Enter album to add photo to:</label>
+                <input type="text" name="album_name" required="true" /><br />
+                <label for="tag">Tag photo (separate multiple tags with space)</label>
+                <input type="text" name="tag" required="false">
+                <input type="submit" value="Upload" />
+            </form>
+    </body>

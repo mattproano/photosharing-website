@@ -1,0 +1,43 @@
+<head>
+    <title>Search for photo by tag</title>
+</head>
+    <body>
+        <a href='/'>Home</a><br>
+        <div class="title">
+            <h1>Search by one or more tag (separate with space)</h1>
+        </div>
+        <form method="post" action="/searchbytag">
+            <label for="tags">Enter tags:</label>
+            <input type="text" name="tags" required="true" /><br />
+            <input type="submit" value="search" />
+        </form>
+    </body>
+
+{% if toptags %} 
+<h2>Here are the top tags on Photoshare</h2>
+    <ul>
+    {% for tagcount in toptags %} 
+        <li>tag: {{tagcount[0]}} with {{tagcount[1]}} posts</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if yourphotos %}
+<h2>Here are YOUR photos by tag (scroll down for more options)</h2>
+    <ul>
+    {% for yourphoto in yourphotos %}
+        <img src='data:image/jpg;base64, {{ base64.b64encode(yourphoto[0]).decode("ascii") }}'/></li>
+        <li>{{yourphoto[1]}}<br>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+{% if photos %}
+<h2>Here are ALL photos by tag (scroll down for more options)</h2>
+    <ul>
+    {% for photo in photos %}
+        <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+        <li>{{photo[1]}}<br>
+    {% endfor %}
+    </ul>
+{% endif %}
